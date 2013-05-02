@@ -10,6 +10,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.version>3.2.2.RELEASE</spring.version>
+    <cargo.version>1.4.0</cargo.version>
   </properties>
   <repositories>
     <repository>
@@ -92,7 +93,7 @@
       <plugin>
         <groupId>org.codehaus.cargo</groupId>
         <artifactId>cargo-maven2-plugin</artifactId>
-        <version>1.4.0</version>
+        <version>${cargo.version}</version>
         <configuration>
           <deployables>
             <deployable>
@@ -124,7 +125,7 @@
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
             <artifactId>cargo-maven2-plugin</artifactId>
-            <version>1.4.0</version>
+            <version>${cargo.version}</version>
             <configuration>
               <!-- Container configuration -->
               <container>
@@ -161,7 +162,7 @@
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
             <artifactId>cargo-maven2-plugin</artifactId>
-            <version>1.4.0</version>
+            <version>${cargo.version}</version>
             <configuration>
               <!-- Container configuration -->
               <container>
