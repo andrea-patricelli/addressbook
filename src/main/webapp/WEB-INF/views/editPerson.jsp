@@ -1,7 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="net.tirasa.test.addressbook.data.Person"%>
 <%@ page language="java" import="java.util.*" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE HTML>
 <html>
@@ -15,7 +14,6 @@
       <table border="1">
         <tbody>
           <tr>
-
             <td>Name:</td>
             <td><input type="text" name="name" value= "${personSearched.name}" ></td>
           </tr><tr>

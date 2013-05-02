@@ -3,9 +3,6 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <!--  <context:annotation-config />
-  <context:component-scan base-package="net.tirasa.test.addressbook.dao.impl.PersonOperationsJdbcImpl" />-->
-  <!--  Configuration bean for H2 database generic with initialization bean-->
   <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
     <property name="driverClassName" value="org.h2.Driver"/>
     <property name="url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"/>

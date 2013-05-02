@@ -8,6 +8,5 @@
     <body>
         <h1>Delete successfully executed!</h1>
         <h2><a href="addressList"/> Address List </a></h2>
-
     </body>
 </html>
