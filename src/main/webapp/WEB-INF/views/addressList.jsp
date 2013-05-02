@@ -1,8 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="net.tirasa.test.addressbook.data.Person"%>
 <%@ page language="java" import="java.util.*" %>
-
 
 <!DOCTYPE HTML>
 <html>
@@ -33,6 +32,5 @@
     </table>
     <br>
     <a href="<c:out value="addPerson"/>">Add a new person</a>
-
   </body>
 </html>

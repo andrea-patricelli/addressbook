@@ -16,7 +16,7 @@ public class AddressController {
     @Autowired
     private PersonOperations dbController;
 
-    @RequestMapping(value = "/")
+    @RequestMapping(value = {"/", "/addressList"})
     public ModelAndView showAddressList() throws Exception {
 
         ModelAndView modelAndView = new ModelAndView("addressList");

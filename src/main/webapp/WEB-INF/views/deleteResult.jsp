@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -8,8 +7,7 @@
     </head>
     <body>
         <h1>Delete successfully executed!</h1>
-
-        <button onclick="window.location = 'http://localhost:8080/addressbook4/'">Address List</button> 
+        <h2><a href="addressList"/> Address List </a></h2>
 
     </body>
 </html>
