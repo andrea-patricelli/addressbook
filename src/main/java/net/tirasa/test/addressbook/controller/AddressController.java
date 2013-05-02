@@ -1,6 +1,6 @@
 package net.tirasa.test.addressbook.controller;
 
-import net.tirasa.test.addressbook.dao.PersonOperations;
+import net.tirasa.test.addressbook.dao.PersonDAO;
 import net.tirasa.test.addressbook.data.Person;
 import net.tirasa.test.addressbook.exceptions.DatabaseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class AddressController {
 
     @Autowired
-    private PersonOperations dbController;
+    private PersonDAO dbController;
 
     @RequestMapping(value = {"/", "/addressList"})
     public ModelAndView showAddressList() throws Exception {
 
         ModelAndView modelAndView = new ModelAndView("addressList");
-        modelAndView.addObject("persons", dbController.listAll());
+        modelAndView.addObject("persons", dbController.list());
         return modelAndView;
     }
 
@@ -33,14 +33,14 @@ public class AddressController {
     public ModelAndView editPersonModify(@RequestParam("id") String personId) throws DatabaseException {
 
         String id = personId;
-        Person searched = (Person) dbController.searchEntry(id);
+        Person searched = (Person) dbController.find(id);
         return new ModelAndView("editPerson").addObject("personSearched", searched);
     }
 
     @RequestMapping(value = "/deletePerson", method = RequestMethod.GET)
     public ModelAndView editPersonDelete(@RequestParam("id") String personId) throws DatabaseException {
         String id = personId;
-        dbController.deleteEntry(id);
+        dbController.delete(id);
         return new ModelAndView("deleteResult");
     }
 
@@ -49,7 +49,7 @@ public class AddressController {
             @RequestParam("email") String personEmail,
             @RequestParam("telephone") String personTelephone) throws DatabaseException {
         // THIS METHOD HANDLES ADD OPERATIONS ON DATABASE
-        dbController.addEntry(personId, personName, personEmail, personTelephone);
+        dbController.save(personId, personName, personEmail, personTelephone);
         return "redirect:/";
     }
 }

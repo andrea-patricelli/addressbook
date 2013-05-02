@@ -21,7 +21,7 @@
     </property>
   </bean>
       
-  <bean id="Jdbc" class="net.tirasa.test.addressbook.dao.impl.PersonOperationsJdbcImpl">
+  <bean id="Jdbc" class="net.tirasa.test.addressbook.dao.impl.PersonDAOJdbcImpl">
     <property name="dataSource" ref="dataSource"/>
   </bean>
 </beans>

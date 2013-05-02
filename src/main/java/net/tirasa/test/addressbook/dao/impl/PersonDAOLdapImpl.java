@@ -18,10 +18,10 @@ import javax.naming.directory.SearchResult;
 import net.tirasa.test.addressbook.controller.AddressController;
 
 import net.tirasa.test.addressbook.data.Person;
-import net.tirasa.test.addressbook.dao.PersonOperations;
+import net.tirasa.test.addressbook.dao.PersonDAO;
 import net.tirasa.test.addressbook.exceptions.DatabaseException;
 
-public class PersonOperationsLdapImpl implements PersonOperations<Person> {
+public class PersonDAOLdapImpl implements PersonDAO {
 
     private String INITCTX;// = "com.sun.jndi.ldap.LdapCtxFactory";
 
@@ -31,7 +31,7 @@ public class PersonOperationsLdapImpl implements PersonOperations<Person> {
 
     private String MGR_PW; // = "password";
 
-    public PersonOperationsLdapImpl(String initctx, String my_host, String manager_dn, String manager_pwd) {
+    public PersonDAOLdapImpl(String initctx, String my_host, String manager_dn, String manager_pwd) {
 
         this.INITCTX = initctx;
         this.MY_HOST = my_host;
@@ -40,7 +40,7 @@ public class PersonOperationsLdapImpl implements PersonOperations<Person> {
     }
 
     @Override
-    public void addEntry(String requestParam_id, String requestParam_name, String requestParam_email,
+    public void save(String requestParam_id, String requestParam_name, String requestParam_email,
             String requestParam_telephone) throws DatabaseException {
 
         try {
@@ -127,7 +127,7 @@ public class PersonOperationsLdapImpl implements PersonOperations<Person> {
     }
 
     @Override
-    public List<Person> listAll() {
+    public List<Person> list() throws DatabaseException{
 
         List<Person> collection = new ArrayList();
 
@@ -161,7 +161,7 @@ public class PersonOperationsLdapImpl implements PersonOperations<Person> {
     }
 
     @Override
-    public Person searchEntry(String requestParam_id) {
+    public Person find(String requestParam_id) {
 // MAKE AN LDAPSEARCH TO GET INFORMATION ABOUT PERSON IN SELECTED BY USER TO MODIFY
         Person searched = null;
         try {
@@ -208,7 +208,7 @@ public class PersonOperationsLdapImpl implements PersonOperations<Person> {
     }
 
     @Override
-    public void deleteEntry(String requestParam_id) { // to implement
+    public void delete(String requestParam_id) { // to implement
 
         try {
             // beginning ldap delete
