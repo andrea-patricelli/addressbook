@@ -1,8 +1,11 @@
 package net.tirasa.test.addressbook.controller;
 
 import net.tirasa.test.addressbook.dao.PersonDAO;
+import net.tirasa.test.addressbook.dao.impl.PersonDAOJdbcImpl;
 import net.tirasa.test.addressbook.data.Person;
 import net.tirasa.test.addressbook.exceptions.DatabaseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +19,10 @@ public class AddressController {
     @Autowired
     private PersonDAO dbController;
 
-    @RequestMapping(value = {"/", "/addressList"})
-    public ModelAndView showAddressList() throws Exception {
+    private final static Logger LOG = LoggerFactory.getLogger(PersonDAOJdbcImpl.class);
 
+    @RequestMapping(value = {"/", "/addressList"})
+    public ModelAndView showAddressList() throws DatabaseException {
         ModelAndView modelAndView = new ModelAndView("addressList");
         modelAndView.addObject("persons", dbController.list());
         return modelAndView;
@@ -26,6 +30,7 @@ public class AddressController {
 
     @RequestMapping(value = "/addPerson")
     public ModelAndView editPersonAdd() {
+        LOG.info("Redirection from /addPerson to editPerson.jsp");
         return new ModelAndView("editPerson");
     }
 
@@ -34,6 +39,7 @@ public class AddressController {
 
         String id = personId;
         Person searched = (Person) dbController.find(id);
+        LOG.info("Using PersonDAO.find(), searched person NAME is: ".concat(searched.getName()));
         return new ModelAndView("editPerson").addObject("personSearched", searched);
     }
 
@@ -50,6 +56,7 @@ public class AddressController {
             @RequestParam("telephone") String personTelephone) throws DatabaseException {
         // THIS METHOD HANDLES ADD OPERATIONS ON DATABASE
         dbController.save(personId, personName, personEmail, personTelephone);
+        LOG.info("Redirection from /editPerson (method = POST) to editPerson.jsp");
         return "redirect:/";
     }
 }
