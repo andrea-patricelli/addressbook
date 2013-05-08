@@ -1,29 +1,38 @@
 package net.tirasa.test.addressbook.data;
 
-public class Person {
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-    private String name = "";
+@Entity
+//@Table(name = "Person") // o Persons
+public class Person implements Serializable {
 
-    private String surname = "";
+    private static final long serialVersionUID = -6096955359736734618L;
 
-    private String email = "";
+    @Id
+    @Column(name="name")
+    private String name;
 
-    private String cellPhoneNumber = "";
+    @Column(name="email")
+    private String email;
 
-    private String homePhoneNumber = "";
+    @Column(name="telephone")
+    private String telephone;
 
     // Constructor
     public Person() {
     }
 
-    public Person(String name, String surname, String email, String cellPhoneNumber,
-            String homePhoneNumber) {
+    public Person(String name, String email, String cellPhoneNumber) {
 
         this.name = name;
-        this.surname = surname;
+        // this.surname = surname;
         this.email = email;
-        this.homePhoneNumber = homePhoneNumber;
-        this.cellPhoneNumber = cellPhoneNumber;
+        // this.homePhoneNumber = homePhoneNumber;
+        this.telephone = cellPhoneNumber;
 
     }
 
@@ -32,7 +41,7 @@ public class Person {
     }
 
     public String getSurname() {
-        return this.surname;
+        return null; // this.surname;
     }
 
     public String getEmail() {
@@ -40,10 +49,10 @@ public class Person {
     }
 
     public String getCellPhoneNumber() {
-        return this.cellPhoneNumber;
+        return this.telephone;
     }
 
     public String getHomePhoneNumber() {
-        return this.homePhoneNumber;
+        return null; // this.homePhoneNumber;
     }
 }

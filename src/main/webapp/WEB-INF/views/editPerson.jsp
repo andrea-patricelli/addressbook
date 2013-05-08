@@ -22,7 +22,7 @@
           </tr>
           <tr>
             <td>Telephone:</td> 
-            <td><input type="tel" pattern="^[0-9]{7,10}" name="telephone" value="${personSearched.homePhoneNumber}" ></td>
+            <td><input type="tel" pattern="^[0-9]{7,10}" name="telephone" value="${personSearched.cellPhoneNumber}" ></td>
           </tr>
           <tr><td colspan="2"><input type="submit"
                                      name="btnSave" value="Save"></td>

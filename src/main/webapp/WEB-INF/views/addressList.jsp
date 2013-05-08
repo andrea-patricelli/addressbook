@@ -23,7 +23,7 @@
           <tr>
             <td>${person.name}</td> 
             <td>${person.email}</td>
-            <td>${person.homePhoneNumber}</td>
+            <td>${person.cellPhoneNumber}</td>
             <td><a href="<c:out value="editPerson?do=edit&id=${person.name}"/>">Edit</a></td>
             <td><a href="<c:out value="deletePerson?do=delete&id=${person.name}"/>">Delete</a></td>
           </tr>

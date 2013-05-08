@@ -12,6 +12,7 @@
  
   <context:annotation-config /> 
   <context:component-scan base-package="net.tirasa.test.addressbook.controller" />
+  
   <bean id="InternalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
     <property name="prefix" value="/WEB-INF/views/" />
@@ -25,6 +26,31 @@
     </property>
   </bean>
   
+  <!-- EntityManager Factory that brings together the datasource, 
+  and JPA Vendor and Transaction Manager-->
+  
+  <tx:annotation-driven transaction-manager="transactionManager" /> 
+  
+  <bean
+    class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+    id="entityManagerFactory">
+    <property name="dataSource" ref="dataSource" />
+    <property name="packagesToScan" value="net.tirasa.test.addressbook.data" />
+    <property name="jpaVendorAdapter">
+      <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="showSql" value="true" />
+        <property name="generateDdl" value="true" />
+        <property name="databasePlatform" value="org.hibernate.dialect.H2Dialect" />
+        <property name="database" value="H2" />
+      </bean>
+    </property>
+  </bean>
+    
+  <bean class="org.springframework.orm.jpa.JpaTransactionManager"
+        id="transactionManager">
+    <property name="entityManagerFactory" ref="entityManagerFactory" />
+  </bean>
+	
   <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
     <property name="driverClassName" value="org.h2.Driver"/>
     <property name="url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"/>
@@ -33,7 +59,7 @@
   </bean>
   
   <bean id="dataDBInitializer" 
-        class="org.springframework.jdbc.datasource.init.DataSourceInitializer">
+          class="org.springframework.jdbc.datasource.init.DataSourceInitializer">
     <property name="dataSource" ref="dataSource"/>
     <property name="databasePopulator">
       <bean class="org.springframework.jdbc.datasource.init.ResourceDatabasePopulator">
@@ -43,6 +69,8 @@
     </property>
   </bean>
       
-  <bean id="Jdbc" class="net.tirasa.test.addressbook.dao.impl.PersonDAOJdbcImpl">
+  <bean id="Jpa" class="net.tirasa.test.addressbook.dao.impl.PersonDAOJpaImpl">
   </bean>
+  
+  <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
 </beans>

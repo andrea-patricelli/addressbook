@@ -1,7 +1,7 @@
 package net.tirasa.test.addressbook.controller;
 
 import net.tirasa.test.addressbook.dao.PersonDAO;
-import net.tirasa.test.addressbook.dao.impl.PersonDAOJdbcImpl;
+import net.tirasa.test.addressbook.dao.impl.PersonDAOJpaImpl;
 import net.tirasa.test.addressbook.data.Person;
 import net.tirasa.test.addressbook.exceptions.DatabaseException;
 import org.slf4j.Logger;
@@ -19,7 +19,7 @@ public class AddressController {
     @Autowired
     private PersonDAO dbController;
 
-    private final static Logger LOG = LoggerFactory.getLogger(PersonDAOJdbcImpl.class);
+    private final static Logger LOG = LoggerFactory.getLogger(PersonDAOJpaImpl.class);
 
     @RequestMapping(value = {"/", "/addressList"})
     public ModelAndView showAddressList() throws DatabaseException {
