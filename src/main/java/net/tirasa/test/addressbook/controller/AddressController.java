@@ -35,27 +35,24 @@ public class AddressController {
     }
 
     @RequestMapping(value = "/editPerson", method = RequestMethod.GET)
-    public ModelAndView editPersonModify(@RequestParam("id") String personId) throws DatabaseException {
-
-        String id = personId;
-        Person searched = (Person) dbController.find(id);
+    public ModelAndView editPersonModify(@RequestParam("id") long personId) throws DatabaseException {
+        Person searched = (Person) dbController.find(personId);
         LOG.info("Using PersonDAO.find(), searched person NAME is: ".concat(searched.getName()));
         return new ModelAndView("editPerson").addObject("personSearched", searched);
     }
 
     @RequestMapping(value = "/deletePerson", method = RequestMethod.GET)
-    public ModelAndView editPersonDelete(@RequestParam("id") String personId) throws DatabaseException {
-        String id = personId;
-        dbController.delete(id);
+    public ModelAndView editPersonDelete(@RequestParam("id") long personId) throws DatabaseException {
+        dbController.delete(personId);
         return new ModelAndView("deleteResult");
     }
 
     @RequestMapping(value = "/editPerson", method = RequestMethod.POST)
-    public String addPerson(@RequestParam("id") String personId, @RequestParam("name") String personName,
+    public String addPerson(@RequestParam("name") String personName,
             @RequestParam("email") String personEmail,
             @RequestParam("telephone") String personTelephone) throws DatabaseException {
         // THIS METHOD HANDLES ADD OPERATIONS ON DATABASE
-        dbController.save(personId, personName, personEmail, personTelephone);
+        dbController.save(new Person(personName, personEmail, personTelephone));
         LOG.info("Redirection from /editPerson (method = POST) to editPerson.jsp");
         return "redirect:/";
     }

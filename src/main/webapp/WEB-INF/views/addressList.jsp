@@ -24,8 +24,8 @@
             <td>${person.name}</td> 
             <td>${person.email}</td>
             <td>${person.cellPhoneNumber}</td>
-            <td><a href="<c:out value="editPerson?do=edit&id=${person.name}"/>">Edit</a></td>
-            <td><a href="<c:out value="deletePerson?do=delete&id=${person.name}"/>">Delete</a></td>
+            <td><a href="<c:out value="editPerson?do=edit&id=${person.id}"/>">Edit</a></td>
+            <td><a href="<c:out value="deletePerson?do=delete&id=${person.id}"/>">Delete</a></td>
           </tr>
         </c:forEach>
       </tbody>

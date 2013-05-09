@@ -10,7 +10,7 @@
   <body>
     <form name="edit" action="editPerson" method="post">
 
-      <input type="hidden" name="id" value="${personSearched.name}"  > 
+      <input type="hidden" name="id" value="${personSearched.id}"  > 
       <table border="1">
         <tbody>
           <tr>
