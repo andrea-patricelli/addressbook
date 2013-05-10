@@ -10,6 +10,25 @@
     </encoder>
   </appender>
   
+  <appender name="FILE"
+            class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>/tmp/addressbookLog.log</file>
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>%d{dd MMM yyyy;HH:mm:ss} %-5level %logger{36} - %msg%n</Pattern>
+    </encoder>
+ 
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <FileNamePattern>/tmp/addressbookLog.%i.log.zip</FileNamePattern>
+      <MinIndex>1</MinIndex>
+      <MaxIndex>10</MaxIndex>
+    </rollingPolicy>
+ 
+    <triggeringPolicy
+      class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <MaxFileSize>2MB</MaxFileSize>
+    </triggeringPolicy>
+ 
+  </appender>
   
   <logger name="org.springframework">
     <level value="debug" />
@@ -17,7 +36,7 @@
   
   <root level="info">
     <!-- IF WE WANT BOTH LOGGING TO STDOUT AND FILES-->
-    <appender-ref ref="STDOUT" /> 
-    <!--<appender-ref ref="FILE" />-->  
+    <!--<appender-ref ref="STDOUT" />--> 
+    <appender-ref ref="FILE" />  
   </root>
 </configuration>
