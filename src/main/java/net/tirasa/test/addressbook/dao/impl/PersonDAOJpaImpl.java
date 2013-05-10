@@ -89,9 +89,6 @@ public class PersonDAOJpaImpl implements PersonDAO {
         } catch (IllegalArgumentException e) {
             LOG.error("DELETE OPERATION BY ENTITY MANAGER FAILED: PROBLEM ON ARGUMENTS");
             throw new DatabaseException(e.getCause());
-        } catch (TransactionRequiredException e) {
-            LOG.error("DELETE OPERATION BY ENTITY MANAGER FAILED: PROBLEM ON TRANSACTION");
-            throw new DatabaseException(e.getCause());
         }
     }
 }
