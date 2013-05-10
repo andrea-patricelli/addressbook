@@ -4,8 +4,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
-import javax.persistence.Query;
-import javax.persistence.TransactionRequiredException;
 import javax.persistence.TypedQuery;
 import net.tirasa.test.addressbook.dao.PersonDAO;
 import net.tirasa.test.addressbook.data.Person;
@@ -27,31 +25,13 @@ public class PersonDAOJpaImpl implements PersonDAO {
 
     @Transactional
     public Person save(Person person) throws DatabaseException {
-        LOG.debug("EXECUTING SAVE OPERATION");
-        List<Person> resultList;
-        Person auxPerson = null;
+        LOG.info("EXECUTING SAVE OPERATION ON: ".concat(person.getName()));
         try {
-            Query query = entityManager.createQuery("Select a From Person a Where a.name='".concat(person.getName()).
-                    concat(
-                    "'"),
-                    Person.class);
-            resultList = query.getResultList();
-            // CHECK IF PERSON ARGUMENT IS AN EXISTING PERSON, IF SO WE HAVE TO IMPORT IT IN CONTEXT
-            if (resultList.isEmpty()) {
-                LOG.debug("INSERTING A NEW PERSON");
-                auxPerson = entityManager.merge(person);
-                return auxPerson;
-            } else {
-                LOG.debug("UPDATING AN EXISTING PERSON");
-                auxPerson = resultList.iterator().next();
-                entityManager.remove(entityManager.find(Person.class, auxPerson.getId()));
-                auxPerson = entityManager.merge(person);
-            }
+            return entityManager.merge(person);
         } catch (Exception e) {
-            LOG.error("ERROR DURING SAVE OPERATION");
-            throw new DatabaseException(e.getCause());
+            LOG.error("ERROR DURING SAVE OPERATION: ".concat(e.getCause().getMessage()));
+            return null;
         }
-        return auxPerson;
     }
 
     @Transactional
@@ -68,7 +48,7 @@ public class PersonDAOJpaImpl implements PersonDAO {
 
     @Transactional
     public List<Person> list() throws DatabaseException {
-        LOG.debug("LISTING PERSONS IN DATABASE...");
+        LOG.info("LISTING PERSONS IN DATABASE...");
         List<Person> resultList = null;
         try {
             TypedQuery<Person> query = entityManager.createQuery("Select a From Person a", Person.class);
@@ -82,9 +62,8 @@ public class PersonDAOJpaImpl implements PersonDAO {
 
     @Transactional
     public void delete(long id) throws DatabaseException {
-        LOG.debug("DELETING ENTRY WITH ID: " + id);
+        LOG.info("DELETING ENTRY WITH ID: " + id);
         try {
-            LOG.info("DELETION OF ID: " + entityManager.find(Person.class, id));
             entityManager.remove(entityManager.find(Person.class, id));
         } catch (IllegalArgumentException e) {
             LOG.error("DELETE OPERATION BY ENTITY MANAGER FAILED: PROBLEM ON ARGUMENTS");

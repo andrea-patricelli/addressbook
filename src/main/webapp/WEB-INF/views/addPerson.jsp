@@ -8,21 +8,21 @@
     <title>Person edit page</title>
   </head>
   <body>
-    <form name="edit" action="editPerson" method="post">
-      <input type="hidden" name="id" value="${personSearched.id}"  >
-      <input type="hidden" name="person" value="${personSearched}"  >
+    <form name="edit" action="addPerson" method="post">
+
+      <input type="hidden" name="id" value=""  > 
       <table border="1">
         <tbody>
           <tr>
             <td>Name:</td>
-            <td><input type="text" name="name" value= "${personSearched.name}" ></td>
+            <td><input type="text" name="name" value= "" ></td>
           </tr><tr>
             <td>e-mail:</td>
-            <td> <input type="email" name="email" value="${personSearched.email}" > </td>
+            <td> <input type="email" name="email" value="" > </td>
           </tr>
           <tr>
             <td>Telephone:</td> 
-            <td><input type="tel" pattern="^[0-9]{7,10}" name="telephone" value="${personSearched.cellPhoneNumber}" ></td>
+            <td><input type="tel" pattern="^[0-9]{7,10}" name="telephone" value="" ></td>
           </tr>
           <tr><td colspan="2"><input type="submit"
                                      name="btnSave" value="Save"></td>

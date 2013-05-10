@@ -3,16 +3,21 @@
 <configuration>
 
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-    <!-- encoders are assigned the type
+    <!--    encoders are assigned the type
     ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
     <encoder>
       <pattern>%d{dd MMM yyyy;HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
     </encoder>
   </appender>
+  
+  
   <logger name="org.springframework">
     <level value="debug" />
   </logger>
-  <root level="debug">
-    <appender-ref ref="STDOUT" />
+  
+  <root level="info">
+    <!-- IF WE WANT BOTH LOGGING TO STDOUT AND FILES-->
+    <appender-ref ref="STDOUT" /> 
+    <!--<appender-ref ref="FILE" />-->  
   </root>
 </configuration>

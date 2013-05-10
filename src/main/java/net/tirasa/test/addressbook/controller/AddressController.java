@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,12 +32,12 @@ public class AddressController {
     @RequestMapping(value = "/addPerson")
     public ModelAndView editPersonAdd() {
         LOG.info("Redirection from /addPerson to editPerson.jsp");
-        return new ModelAndView("editPerson");
+        return new ModelAndView("addPerson"); // aggiunto /add
     }
 
     @RequestMapping(value = "/editPerson", method = RequestMethod.GET)
     public ModelAndView editPersonModify(@RequestParam("id") long personId) throws DatabaseException {
-        Person searched = (Person) dbController.find(personId);
+        Person searched = dbController.find(personId);
         LOG.info("Using PersonDAO.find(), searched person NAME is: ".concat(searched.getName()));
         return new ModelAndView("editPerson").addObject("personSearched", searched);
     }
@@ -48,6 +49,20 @@ public class AddressController {
     }
 
     @RequestMapping(value = "/editPerson", method = RequestMethod.POST)
+    public String editPerson(@RequestParam("id") long personId, @RequestParam("name") String personName,
+            @RequestParam("email") String personEmail,
+            @RequestParam("telephone") String personTelephone, @ModelAttribute("person") Person person) throws
+            DatabaseException {
+        // THIS METHOD HANDLES EDIT OPERATIONS ON DATABASE
+        person.setName(personName);
+        person.setEmail(personEmail);
+        person.setTelephone(personTelephone);
+        dbController.save(person);
+        LOG.info("Redirection from /editPerson (method = POST) to editPerson.jsp");
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/addPerson", method = RequestMethod.POST)
     public String addPerson(@RequestParam("name") String personName,
             @RequestParam("email") String personEmail,
             @RequestParam("telephone") String personTelephone) throws DatabaseException {

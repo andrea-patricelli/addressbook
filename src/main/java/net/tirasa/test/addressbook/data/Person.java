@@ -47,4 +47,20 @@ public class Person implements Serializable {
     public String getCellPhoneNumber() {
         return this.telephone;
     }
+
+    public void setId(long newId) {
+        this.id = newId;
+    }
+
+    public void setName(String newName) {
+        this.name = newName;
+    }
+
+    public void setEmail(String newEmail) {
+        this.email = newEmail;
+    }
+
+    public void setTelephone(String newTelephone) {
+        this.telephone = newTelephone;
+    }
 }
