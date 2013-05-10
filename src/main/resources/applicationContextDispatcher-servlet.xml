@@ -58,17 +58,6 @@
     <property name="password" value=""/>
   </bean>
   
-  <bean id="dataDBInitializer" 
-          class="org.springframework.jdbc.datasource.init.DataSourceInitializer">
-    <property name="dataSource" ref="dataSource"/>
-    <property name="databasePopulator">
-      <bean class="org.springframework.jdbc.datasource.init.ResourceDatabasePopulator">
-        <property name="scripts" value="classpath:/database_config.sql"/>
-        <property name="continueOnError" value="true"/>
-      </bean> 
-    </property>
-  </bean>
-      
   <bean id="Jpa" class="net.tirasa.test.addressbook.dao.impl.PersonDAOJpaImpl">
   </bean>
   
