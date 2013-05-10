@@ -6,6 +6,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 import javax.persistence.TransactionRequiredException;
+import javax.persistence.TypedQuery;
 import net.tirasa.test.addressbook.dao.PersonDAO;
 import net.tirasa.test.addressbook.data.Person;
 import net.tirasa.test.addressbook.exceptions.DatabaseException;
@@ -70,7 +71,7 @@ public class PersonDAOJpaImpl implements PersonDAO {
         LOG.debug("LISTING PERSONS IN DATABASE...");
         List<Person> resultList = null;
         try {
-            Query query = entityManager.createQuery("Select a From Person a", Person.class);
+            TypedQuery<Person> query = entityManager.createQuery("Select a From Person a", Person.class);
             resultList = query.getResultList();
         } catch (IllegalArgumentException e) {
             LOG.error("LIST OPERATION BY ENTITY MANAGER FAILED");
