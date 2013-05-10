@@ -47,10 +47,4 @@ public class Person implements Serializable {
     public String getCellPhoneNumber() {
         return this.telephone;
     }
-
-//    @Override
-//    public String toString() {
-//        return "Person [id=" + id + ", name=" + name + ", email=" + email
-//                + ", telephone=" + telephone + "]";
-//    }
 }
