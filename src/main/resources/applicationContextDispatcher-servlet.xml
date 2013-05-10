@@ -36,12 +36,12 @@
     id="entityManagerFactory">
     <property name="dataSource" ref="dataSource" />
     <property name="packagesToScan" value="net.tirasa.test.addressbook.data" />
+    <property name="persistenceUnitName" value="PersistenceUnit" />
     <property name="jpaVendorAdapter">
-      <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-        <property name="showSql" value="false" />
+      <bean class="org.springframework.orm.jpa.vendor.OpenJpaVendorAdapter">
+        <property name="showSql" value="true" />
         <property name="generateDdl" value="true" />
-        <property name="databasePlatform" value="org.hibernate.dialect.H2Dialect" />
-        <!--<property name="database" value="H2" />-->
+        <property name="databasePlatform" value="org.apache.openjpa.jdbc.sql.H2Dictionary" />
       </bean>
     </property>
   </bean>
