@@ -14,7 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+
 @Repository
+@Transactional
 public class PersonDAOJpaImpl implements PersonDAO {
 
     @PersistenceContext(type = PersistenceContextType.TRANSACTION)
@@ -34,7 +36,7 @@ public class PersonDAOJpaImpl implements PersonDAO {
         }
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public Person find(long id) throws DatabaseException {
         Person p = null;
         try {
@@ -46,7 +48,7 @@ public class PersonDAOJpaImpl implements PersonDAO {
         return p;
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<Person> list() throws DatabaseException {
         LOG.debug("LISTING PERSONS IN DATABASE...");
         List<Person> resultList = null;
