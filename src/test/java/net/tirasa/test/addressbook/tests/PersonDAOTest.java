@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:testEnv.xml"})
+@ContextConfiguration(locations = {"classpath:applicationContextDispatcher-servlet.xml"})
 @Transactional
 public class PersonDAOTest {
 
