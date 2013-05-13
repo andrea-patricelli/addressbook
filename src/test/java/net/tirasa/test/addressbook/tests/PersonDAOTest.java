@@ -15,7 +15,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:testEnv.xml"})
 @Transactional
@@ -42,6 +41,7 @@ public class PersonDAOTest {
     }
 
     @Test
+    @Transactional(readOnly = true)
     public void testList() throws DatabaseException {
         LOG.info("TESTING LIST OPERATION...");
         List<Person> list = personDAO.list();
@@ -60,6 +60,7 @@ public class PersonDAOTest {
     }
 
     @Test
+    @Transactional(readOnly = true)
     public void testFind() throws DatabaseException {
         int i = 0;
         String names[] = {"Pippo", "Pluto", "Foo"};
