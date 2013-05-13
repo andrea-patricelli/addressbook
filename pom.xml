@@ -180,10 +180,10 @@
       </plugin>
       <!--OpenJpa plugin-->
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
+        <groupId>org.apache.openjpa</groupId>
         <artifactId>openjpa-maven-plugin</artifactId>
         <inherited>true</inherited>
-        <version>1.2</version>
+        <version>${openjpa.version}</version>
         <configuration>
           <connectionDriverName>oracle.jdbc.driver.OracleDriver</connectionDriverName>
           <includes>${basedir}/target/classes/**/*.class</includes>
@@ -201,11 +201,6 @@
           </execution>
         </executions>
         <dependencies>
-          <dependency>
-            <groupId>org.apache.openjpa</groupId>
-            <artifactId>openjpa</artifactId>
-            <version>2.2.2</version>
-          </dependency>
           <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
