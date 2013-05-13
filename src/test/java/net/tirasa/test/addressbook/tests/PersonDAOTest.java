@@ -9,14 +9,16 @@ import net.tirasa.test.addressbook.exceptions.DatabaseException;
 import org.junit.Assert;
 import java.util.Iterator;
 import java.util.List;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:testEnv.xml"})
+@Transactional
 public class PersonDAOTest {
 
     @Autowired
@@ -64,13 +66,6 @@ public class PersonDAOTest {
         for (Iterator<Person> it = personDAO.list().iterator(); it.hasNext();) {
             Assert.assertEquals(personDAO.find(it.next().getId()).getName(), names[i]);
             i++;
-        }
-    }
-
-    @After
-    public void deleteAll() throws DatabaseException {
-        for (Iterator<Person> it = personDAO.list().iterator(); it.hasNext();) {
-            personDAO.delete(it.next().getId());
         }
     }
 }
