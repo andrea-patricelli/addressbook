@@ -12,13 +12,13 @@
   
   <appender name="FILE"
             class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>/tmp/addressbookLog.log</file>
+    <file>${logfile}</file>
     <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
       <Pattern>%d{dd MMM yyyy;HH:mm:ss} %-5level %logger{36} - %msg%n</Pattern>
     </encoder>
  
     <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-      <FileNamePattern>/tmp/addressbookLog.%i.log.zip</FileNamePattern>
+      <FileNamePattern>${logfile}.%i.log.zip</FileNamePattern>
       <MinIndex>1</MinIndex>
       <MaxIndex>10</MaxIndex>
     </rollingPolicy>
@@ -31,10 +31,10 @@
   </appender>
   
   <logger name="org.springframework">
-    <level value="debug" />
+    <level value="warn" />
   </logger>
   
-  <root level="info">
+  <root level="debug">
     <!-- IF WE WANT BOTH LOGGING TO STDOUT AND FILES-->
     <!--<appender-ref ref="STDOUT" />--> 
     <appender-ref ref="FILE" />  

@@ -25,7 +25,7 @@ public class PersonDAOJpaImpl implements PersonDAO {
 
     @Transactional
     public Person save(Person person) throws DatabaseException {
-        LOG.info("EXECUTING SAVE OPERATION ON: ".concat(person.getName()));
+        LOG.debug("EXECUTING SAVE OPERATION ON: ".concat(person.getName()));
         try {
             return entityManager.merge(person);
         } catch (Exception e) {
@@ -48,7 +48,7 @@ public class PersonDAOJpaImpl implements PersonDAO {
 
     @Transactional
     public List<Person> list() throws DatabaseException {
-        LOG.info("LISTING PERSONS IN DATABASE...");
+        LOG.debug("LISTING PERSONS IN DATABASE...");
         List<Person> resultList = null;
         try {
             TypedQuery<Person> query = entityManager.createQuery("Select a From Person a", Person.class);
@@ -62,7 +62,7 @@ public class PersonDAOJpaImpl implements PersonDAO {
 
     @Transactional
     public void delete(long id) throws DatabaseException {
-        LOG.info("DELETING ENTRY WITH ID: " + id);
+        LOG.debug("DELETING ENTRY WITH ID: " + id);
         try {
             entityManager.remove(entityManager.find(Person.class, id));
         } catch (IllegalArgumentException e) {

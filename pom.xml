@@ -8,6 +8,7 @@
   <name>addressbook5 Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <properties>
+    <logfile>/tmp/addressbookLog.log</logfile>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.version>3.2.2.RELEASE</spring.version>
     <cargo.version>1.4.0</cargo.version>
@@ -139,6 +140,12 @@
     </dependency>
   </dependencies>
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
