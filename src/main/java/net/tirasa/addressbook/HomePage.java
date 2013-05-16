@@ -11,6 +11,7 @@ import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 public class HomePage extends WebPage {
 
@@ -19,7 +20,7 @@ public class HomePage extends WebPage {
     @SpringBean
     private PersonDAO personDAO;
 
-    private final static org.slf4j.Logger LOG = LoggerFactory.getLogger(HomePage.class);
+    private final static Logger LOG = LoggerFactory.getLogger(HomePage.class);
 
     public HomePage() {
 

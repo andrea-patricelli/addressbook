@@ -21,7 +21,7 @@ public class TelephoneValidator implements IValidator<String> {
     public void validate(IValidatable<String> validatable) {
         final String telephone = validatable.getValue();
         // validate telephone
-        if (pattern.matcher(telephone).matches() == false) {
+        if (!pattern.matcher(telephone).matches()) {
             error(validatable, "bad-telephone-number");
         }
     }

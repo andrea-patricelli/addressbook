@@ -9,7 +9,6 @@
   <artifactId>addressbook6</artifactId>
   <packaging>war</packaging>
   <version>1.0</version>
-  <!-- TODO project name  -->
   <name>addressbook6</name>
   <description></description>
   <licenses>
@@ -191,6 +190,7 @@
         <configuration>
           <connectionDriverName>oracle.jdbc.driver.OracleDriver</connectionDriverName>
           <includes>${basedir}/target/classes/**/*.class</includes>
+          <includes>net/tirasa/addressbook/data/*.class</includes>
           <persistenceXmlFile>${project.basedir}/src/main/resources/META-INF/persistence.xml</persistenceXmlFile>
           <addDefaultConstructor>true</addDefaultConstructor>
           <enforcePropertyRestrictions>true</enforcePropertyRestrictions>

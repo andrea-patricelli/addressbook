@@ -12,10 +12,11 @@ import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 public class EditPerson extends WebPage {
 
-    private final static org.slf4j.Logger LOG = LoggerFactory.getLogger(EditPerson.class);
+    private final static Logger LOG = LoggerFactory.getLogger(EditPerson.class);
 
     private static final long serialVersionUID = 320083532829771040L;
 
@@ -24,7 +25,7 @@ public class EditPerson extends WebPage {
     @SpringBean
     private PersonDAO personDao;
 
-    EditPerson(Person person) {
+    public EditPerson(Person person) {
 
         this.person = person;
         FeedbackPanel fp = new FeedbackPanel("feedback");
