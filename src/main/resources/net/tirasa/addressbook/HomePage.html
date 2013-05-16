@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>Introduction to Apache Wicket - Example Application</title>
+  </head>
+  <body>
+    <table border="1">
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td>e-mail</td>
+          <td>Phone Number</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>   
+        <tr wicket:id="listview">
+          <td><span wicket:id="name"></span></td>
+          <td><span wicket:id="email"></span></td>
+          <td><span wicket:id="telephone"></span></td>
+          <td><a href="#" wicket:id ="edit">Edit</a></td>
+          <td><a href="#" wicket:id ="remove">Delete</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <button wicket:id = "addPerson" id="addContact">Add New Person</button>
+  </body>
+</html>

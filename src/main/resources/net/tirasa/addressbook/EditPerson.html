@@ -1,0 +1,36 @@
+<html xmlns:wicket="http://wicket.apache.org">
+  <head>
+    <title>Wicket Examples - guestbook</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  <style>
+    .feedbackPanelERROR {
+      color: red;
+    }
+  </style>
+  <body>
+    <span wicket:id = "feedback"></span>
+    <form wicket:id = "personForm" id = "personForm">
+      <table border="1">
+        <tbody>
+        <input type="hidden" name="id" value= "" wicket:id ="id" >
+        <tr>
+          <td>Name:</td>
+          <td><input type="text" name="name" value= "" wicket:id ="name" ></td>
+        </tr><tr>
+          <td>e-mail:</td>
+          <td> <input type="email" name="email" value="" wicket:id ="email"> </td>
+        </tr>
+        <tr>
+          <td>Telephone:</td> 
+          <td><input type="text" name="telephone" value="" wicket:id ="telephone"></td>
+        </tr>
+
+        <tr><td colspan="2"><input type="submit"
+                                   name="btnSave" value="Save" id="formsubmit"></td>
+        </tr>
+        </tbody>
+      </table>
+    </form>
+  </body>
+</html>

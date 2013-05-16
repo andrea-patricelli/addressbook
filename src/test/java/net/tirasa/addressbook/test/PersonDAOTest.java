@@ -1,11 +1,11 @@
-package net.tirasa.test.addressbook.tests;
+package net.tirasa.addressbook.test;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import net.tirasa.test.addressbook.dao.PersonDAO;
-import net.tirasa.test.addressbook.data.Person;
-import net.tirasa.test.addressbook.exceptions.DatabaseException;
+import net.tirasa.addressbook.dao.PersonDAO;
+import net.tirasa.addressbook.data.Person;
+import net.tirasa.addressbook.exceptions.DatabaseException;
 import org.junit.Assert;
 import java.util.Iterator;
 import java.util.List;

@@ -1,13 +1,13 @@
-package net.tirasa.test.addressbook.data;
+package net.tirasa.addressbook.data;
 
-import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import org.apache.wicket.util.io.IClusterable;
 
 @Entity
-public class Person implements Serializable {
+public class Person implements IClusterable {
 
     private static final long serialVersionUID = -6096955359736734618L;
 
@@ -32,6 +32,12 @@ public class Person implements Serializable {
 
     }
 
+    public Person(final Person comment) {
+        this.name = comment.name;
+        this.email = comment.email;
+        this.telephone = comment.telephone;
+    }
+
     public long getId() {
         return this.id;
     }
@@ -44,7 +50,7 @@ public class Person implements Serializable {
         return this.email;
     }
 
-    public String getCellPhoneNumber() {
+    public String getTelephone() {
         return this.telephone;
     }
 

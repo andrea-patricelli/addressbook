@@ -34,6 +34,10 @@
     <level value="warn" />
   </logger>
   
+  <logger name="org.apache.wicket">
+    <level value="warn" />
+  </logger>
+  
   <root level="debug">
     <!-- IF WE WANT BOTH LOGGING TO STDOUT AND FILES-->
     <!--<appender-ref ref="STDOUT" />--> 

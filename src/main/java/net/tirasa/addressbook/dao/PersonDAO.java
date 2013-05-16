@@ -1,8 +1,9 @@
-package net.tirasa.test.addressbook.dao;
+package net.tirasa.addressbook.dao;
 
 import java.util.List;
-import net.tirasa.test.addressbook.data.Person;
-import net.tirasa.test.addressbook.exceptions.DatabaseException;
+import net.tirasa.addressbook.data.Person;
+import net.tirasa.addressbook.exceptions.DatabaseException;
+
 
 public interface PersonDAO {
     

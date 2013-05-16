@@ -1,4 +1,4 @@
-package net.tirasa.test.addressbook.exceptions;
+package net.tirasa.addressbook.exceptions;
 
 public class DatabaseException extends Exception {
 

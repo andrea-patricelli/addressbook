@@ -3,6 +3,6 @@
   <persistence-unit name="PersistenceUnit" transaction-type="RESOURCE_LOCAL">
     <description>generated-persistence-unit</description>
     <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
-    <class>net.tirasa.test.addressbook.data.Person</class>
+    <class>net.tirasa.addressbook.data.Person</class>
   </persistence-unit>
 </persistence>
