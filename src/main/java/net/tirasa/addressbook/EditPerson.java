@@ -1,7 +1,5 @@
 package net.tirasa.addressbook;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import net.tirasa.addressbook.dao.PersonDAO;
 import net.tirasa.addressbook.data.Person;
 import net.tirasa.addressbook.exceptions.DatabaseException;
@@ -61,7 +59,7 @@ public class EditPerson extends WebPage {
                 personDao.save(person);
                 setResponsePage(new HomePage());
             } catch (DatabaseException ex) {
-                Logger.getLogger(EditPerson.class.getName()).log(Level.SEVERE, null, ex);
+                LOG.error("ERROR IN SUBMIT OF FORM: ".concat(ex.getMessage()));
             }
         }
     }
